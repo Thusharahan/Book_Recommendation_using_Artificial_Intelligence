@@ -31,12 +31,3 @@ def classify_user_input_distilbert(input_text):
         # Handle any errors that may occur during inference
         print(f"Error during inference: {e}")
         return "Unknown"
-
-# # Number of user inputs you want to classify
-# num_inputs = 3  # You can change this to the desired number of inputs
-
-# # Iterate for the specified number of inputs
-# for _ in range(num_inputs):
-#     user_input = input("Enter user input: ")
-#     classification = classify_user_input_distilbert(user_input)
-#     print(f"User Input: {user_input}, Classification: {classification}")

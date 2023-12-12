@@ -12,7 +12,7 @@ tfv_matrix = load_npz("tfv_matrix.npz")
 model_filename = "book_recommendation_model.joblib"
 loaded_model = joblib.load(model_filename)
 
-# Read the dataset (make sure to use the same preprocessing steps as in your original code)
+# Read the dataset
 books_cleaned_file_path = r"D:\AI_Project\Book_Recommendation_using_Artificial_Intelligence\AI_model\storage\books_cleaned.csv"
 
 # Load books_cleaned from the CSV file in another program
@@ -34,45 +34,8 @@ def recommended_books(user_input):
     recommended_books = books_cleaned.iloc[top_recommendations_indices]
     recommended_books = recommended_books[['Name', 'Authors']]
 
-    # recommended_books['Authors'] = recommended_books['Authors'].astype(str)
-    
-    # recommended_books['Authors'] = recommended_books['Authors'].replace("_", "")
-
-    # # Capitalize the first word of each column
-    # recommended_books['Name'] = recommended_books['Name'].str.capitalize()
-    # recommended_books['Authors'] = recommended_books['Authors'].str.capitalize()
-    # Remove underscores and capitalize each word in 'Name' and 'Authors' columns
-
-    # recommended_books['Name'] = recommended_books['Name'].str.split(' ').apply(lambda x: ' '.join(map(str.capitalize, x)))
     recommended_books['Name'] = recommended_books['Name'].str.split('(').apply(lambda x: '('.join(map(str.capitalize, x)))
-    # recommended_books['Authors'] = recommended_books['Authors'].str.replace("_", "").str.title()
     recommended_books['Authors'] = recommended_books['Authors'].str.split('_').apply(lambda x: ' '.join(map(str.capitalize, x)))
 
     return recommended_books
-
-# # print(recommended_books("romance").shape)
-# response = recommended_books("roamce")
-
-# # # Create a formatted string for each book
-# # formatted_books = ["- Name: {}\n  Author: {}\n  Description: {}".format(book["Name"], book["Authors"], book["Description"]) for book in response]
-
-# # # Join the formatted strings with newline characters to create the final string
-# # response_str = "\n".join(formatted_books)
-
-# # # Print or use response_str as needed
-# # print(response_str)
-
-# # response['Authors'] = response['Authors'].replace("_", "")
-# #     # Capitalize the first word of each column
-# # response['Name'] = response['Name'].str.capitalize()
-# # response['Authors'] = response['Authors'].str.capitalize()
-
-# # Create a formatted string for each book
-# formatted_books = ["- Name: {}\n  Author: {}".format(row['Name'], row['Authors']) for index, row in response.iterrows()]
-
-# # Join the formatted strings with newline characters to create the final string
-# response_str = "\n".join(formatted_books)
-
-# # Print or use response_str as needed
-# print(response_str)
 
