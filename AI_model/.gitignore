@@ -1,0 +1,10 @@
+*.lib
+*.dll
+*.csv
+*.lnk
+*.joblib
+*.npz
+data/
+storage/
+myvenv/
+
