@@ -16,11 +16,11 @@ class RAGPaLMQuery:
         self.documents = SimpleDirectoryReader("./data").load_data()
 
         # Set up API key for PaLM
-        os.environ['GOOGLE_API_KEY'] = 'AIzaSyCH5flF7zRUL5yNGH2GUzlEnnwYgX7qYN4'
+        os.environ['GOOGLE_API_KEY'] = 'API key'
 
         # Initialize PaLM and Hugging Face embedding model
         self.llm = PaLM()
-        self.embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en")
+        self.embed_model = HuggingFaceEmbedding(model_name="Embedding model")
 
         # Set up service context
         self.service_context = ServiceContext.from_defaults(llm=self.llm, embed_model=self.embed_model, chunk_size=800, chunk_overlap=20)

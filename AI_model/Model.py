@@ -41,11 +41,4 @@ model.fit(books_cleaned['Description'])
 model_filename = "book_recommendation_model.joblib"
 joblib.dump(model, model_filename)
 
-# # Load the saved model using joblib
-# loaded_model = joblib.load(model_filename)
-
-# # Save books_cleaned to a CSV file
-# books_cleaned_file_path = r"D:\AI_Project\Book_Recommendation_using_Artificial_Intelligence\AI_model\storage\books_cleaned.csv"
-# books_cleaned.to_csv(books_cleaned_file_path, index=False)
-
 
