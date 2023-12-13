@@ -34,6 +34,7 @@ if prompt := st.chat_input("Need any book recommendation? Drop your questions he
         # Display assistant response in chat message container
         with st.chat_message("assistant"):
             st.markdown(model_response)
+        # response = "Currenty, I don't have enough information about your preferances to provide tailored book recommendation. I appologies for any inconvinience caused."
         # Add assistant response to chat history
         st.session_state.messages.append({"role": "assistant", "content": model_response})
     else:
