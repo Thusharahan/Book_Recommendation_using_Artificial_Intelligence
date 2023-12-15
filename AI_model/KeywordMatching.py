@@ -17,19 +17,30 @@ def process_sentence(sentence):
 def classify_user_input(input_text):
     # Define Keywords
     # Specify the file path where the genres are stored
-    file_path = "storage/book_genres.txt"
+    file_path_genre = "storage/genres.txt"
 
     # Read genres from the text file
-    with open(file_path, "r") as file:
-        keywords = [line.strip() for line in file]
+    with open(file_path_genre, "r") as file:
+        genre_keywords = [line.strip() for line in file]
+
+    file_path_notgenre = "storage/not_in_genre.txt"
+
+    # Read genres from the text file
+    with open(file_path_notgenre, "r") as file:
+        notgenre_keywords = [line.strip() for line in file]
 
     corrected_text = process_sentence(input_text)
     # print(corrected_text)
 
     # Check for Genre Keywords
-    for keyword in keywords:
+    for keyword in genre_keywords:
         if re.search(keyword, corrected_text, re.IGNORECASE):
             return "Genre", keyword
+    
+    # Check for Genre Keywords
+    for keyword in notgenre_keywords:
+        if re.search(keyword, corrected_text, re.IGNORECASE):
+            return "NGenre", keyword
     
     # If no keywords match, consider it a General question
     return "General", None

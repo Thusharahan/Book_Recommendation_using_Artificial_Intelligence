@@ -34,11 +34,17 @@ if prompt := st.chat_input("Need any book recommendation? Drop your questions he
         # Display assistant response in chat message container
         with st.chat_message("assistant"):
             st.markdown(model_response)
-        # response = "Currenty, I don't have enough information about your preferances to provide tailored book recommendation. I appologies for any inconvinience caused."
         # Add assistant response to chat history
         st.session_state.messages.append({"role": "assistant", "content": model_response})
+    elif classification == "NGenre":
+        response = "I've discovered your interest in **{}** , but unfortunately, I currently lack sufficient information about your preferences to offer personalized book recommendations. I apologize for any inconvenience this may have caused. If you could provide more details or specific preferences, I would be delighted to assist you in finding the perfect book tailored to your tastes.".format(keyword)
+        # Display assistant response in chat message container
+        with st.chat_message("assistant"):
+            st.markdown(response)
+        # Add assistant response to chat history
+        st.session_state.messages.append({"role": "assistant", "content": response})
     else:
-        model_response = rag_palm_query_instance.query_response(prompt)
+        # model_response = rag_palm_query_instance.query_response(prompt)
         if classification == "Genre":
             caption = "As you're interested in **{}**, I recommend you the following books:".format(keyword)
             
@@ -49,7 +55,8 @@ if prompt := st.chat_input("Need any book recommendation? Drop your questions he
             # Join the formatted strings with newline characters to create the final string
             response_str = "\n".join(formatted_books)
 
-            combined_response = str(model_response) + "\n\n" + caption + "\n" + response_str
+            # combined_response = str(model_response) + "\n\n" + caption + "\n" + response_str
+            combined_response = str(caption) + "\n" + response_str
 
             # Display assistant response in chat message container
             with st.chat_message("assistant"):
