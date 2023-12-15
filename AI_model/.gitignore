@@ -8,4 +8,5 @@ data/
 storage/
 myvenv/
 NLPclassifier.py
+*.zip
 
